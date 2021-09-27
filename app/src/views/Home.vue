@@ -22,10 +22,7 @@ import { useStore } from 'vuex';
 export default {
   setup() {
     const store = useStore();
-    // const sets = computed(() => store.state.sets);
     const sets = computed(() => store.getters.setsByRelease);
-
-    store.dispatch('getSets');
 
     return {
       sets,
