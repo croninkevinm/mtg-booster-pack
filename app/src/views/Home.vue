@@ -31,13 +31,22 @@ export default {
       .getters
       .setsByRelease
       .filter((set) => {
-        const filterRegExp = new RegExp(filter.value.toLowerCase());
-        const matchName = set.name.toLowerCase().match(filterRegExp);
-        const matchCode = set.code.toLowerCase().match(filterRegExp);
-        // eslint-disable-next-line no-param-reassign
-        if (!set.block) { set.block = ''; }
-        const matchBlock = set.block.toLowerCase().match(filterRegExp);
-        return matchName || matchCode || matchBlock;
+        const filterValue = filter.value.toLowerCase();
+        let matchType = '';
+        if (filterValue.includes(':')) {
+          matchType = filterValue.split(':')[0].trim();
+        }
+        const filterText = filterValue.split(':').pop().trim();
+        const filterRegExp = new RegExp(filterText);
+        if (matchType === 'code' || matchType === 'id') {
+          return set.code.toLowerCase().match(filterRegExp);
+        }
+        if (matchType === 'block') {
+          // eslint-disable-next-line no-param-reassign
+          if (!set.block) { set.block = ''; }
+          return set.block.toLowerCase().match(filterRegExp);
+        }
+        return set.name.toLowerCase().match(filterRegExp);
       }));
 
     return {
