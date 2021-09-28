@@ -5,6 +5,7 @@ export default createStore({
     sets: [],
     cards: [],
     setCards: [],
+    loading: false,
   },
   getters: {
     setsByRelease(state) {
@@ -65,13 +66,13 @@ export default createStore({
       });
     },
 
-    async getBooster({ state }, setCode) {
-      const response = await fetch(
-        `https://api.magicthegathering.io/v1/sets/${setCode}/booster`
-      );
-      const json = await response.json();
-      state.cards = json.cards.reverse().filter((card) => card.imageUrl);
-    },
+    // async getBooster({ state }, setCode) {
+    //   const response = await fetch(
+    //     `https://api.magicthegathering.io/v1/sets/${setCode}/booster`
+    //   );
+    //   const json = await response.json();
+    //   state.cards = json.cards.reverse().filter((card) => card.imageUrl);
+    // },
 
     async getCards({ state }, setCode) {
       let page = 1;

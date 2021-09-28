@@ -37,6 +37,7 @@ export default {
     const packCards = ref([]);
     const route = useRoute();
     const store = useStore();
+    const loading = computed(() => store.state.loading);
     const currentSet = computed(() => store.getters.setsByCode.get(route.params.setCode));
     const currentSetCards = computed(() => store.getters.cardsByRarity);
 
@@ -111,6 +112,7 @@ export default {
     return {
       currentSet,
       packCards,
+      loading,
     };
   },
   components: {
