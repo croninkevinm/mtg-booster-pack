@@ -77,24 +77,34 @@ export default {
       const extraFoil = (Math.random() < CHANCE_FOIL_EXTRA);
 
       // Get land
-      pack.push(...getRandomCards(1, basicLands, CHANCE_FOIL_LAND));
+      if (basicLands) {
+        pack.push(...getRandomCards(1, basicLands, CHANCE_FOIL_LAND));
+      }
 
       // Get commons
-      if (extraFoil) {
-        pack.push(...getRandomCards(9, commons));
-      } else {
-        pack.push(...getRandomCards(10, commons));
+      if (commons) {
+        if (extraFoil) {
+          pack.push(...getRandomCards(9, commons));
+        } else {
+          pack.push(...getRandomCards(10, commons));
+        }
       }
 
       // Get uncommons
-      pack.push(...getRandomCards(3, uncommons));
+      if (uncommons) {
+        pack.push(...getRandomCards(3, uncommons));
+      }
 
-      if (extraFoil) {
-        pack.push(...getRandomCards(1, allCards, 1));
+      if (allCards) {
+        if (extraFoil) {
+          pack.push(...getRandomCards(1, allCards, 1));
+        }
       }
 
       // Get rare
-      pack.push(...getRandomCards(1, rares, CHANCE_FOIL_RARE));
+      if (rares) {
+        pack.push(...getRandomCards(1, rares, CHANCE_FOIL_RARE));
+      }
       packCards.value = pack;
     });
 
