@@ -14,4 +14,7 @@ export default {
 </script>
 
 <style lang="scss">
+.navbar {
+  margin-bottom: 2em;
+}
 </style>

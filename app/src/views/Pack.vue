@@ -1,11 +1,24 @@
 <template>
   <div class="open-pack">
-    <div id="nav">
-      <router-link :to="{ name: 'Home' }">Set List</router-link>
-    </div>
-    <h1>{{ currentSet.name }}</h1>
-    <!-- <img v-bind:src="'./images/set_logo/' + currentSet.code + '.png'" alt=""> -->
-    <div class="cards">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <router-link class="navbar-item" :to="{ name: 'Home' }">
+          Magic Booster Sim
+        </router-link>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <span class="navbar-item" >{{ currentSet.name }}</span>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="cards container">
       <Card
         class="card"
         v-for="card in packCards"

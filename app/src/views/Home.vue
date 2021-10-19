@@ -1,8 +1,18 @@
 <template>
 <div class="home">
-  <form>
-    <input type="text" v-model="filter">
-  </form>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <router-link class="navbar-item" :to="{ name: 'Home' }">
+        Magic Booster Sim
+      </router-link>
+    </div>
+
+    <div class="navbar-menu">
+      <form>
+        <input type="text" v-model="filter">
+      </form>
+    </div>
+  </nav>
   <div class="sets">
     <router-link
       class="set"
@@ -87,7 +97,6 @@ form {
 
   input {
     width: 100%;
-    font-size: 2rem;
   }
 }
 
