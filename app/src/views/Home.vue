@@ -32,6 +32,10 @@ export default {
       .setsByRelease
       .filter((set) => {
         const filterValue = filter.value.toLowerCase();
+        if (!filterValue.match(/\w/)) {
+          return true;
+        }
+        console.log(`filtering with: ${filterValue}`);
         let matchType = '';
         if (filterValue.includes(':')) {
           matchType = filterValue.split(':')[0].trim();
